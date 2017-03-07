@@ -43,10 +43,14 @@ Accounts.registerLoginHandler(function(req) {
 
           var insertObject = {
             createdAt: new Date(),
-            emails: [{
+            
+            
+            //This because when you use Accounts.createUser the package insert a document that could contains the google email.
+            //This cause email already exist error! This make compliants with other packages like accounts-facebook, twitter and so on. 
+            /*emails: [{
               address: googleResponse.email,
               verified: true,
-            }],
+            }],*/
             profile: {},
             services: {
               google: googleResponse,
